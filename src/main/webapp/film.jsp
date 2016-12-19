@@ -28,8 +28,8 @@
 	  <td>${item.description }</td>
 	  <td>${item.language.name}</td>
 	  <td><a href="MapServlet.action"> 新增    </a></td>
-	  <td><a href="FilmServlet.action?type=show&id='+${item.filmId}+'"> 删除    </a></td>
-	  <td><a href="FilmServlet.action?type=update&id='+${item.filmId}+'"> 编辑    </a></td>
+	  <td><a href="FilmServlet.action?type=delete"> 删除    </a></td>
+	  <td><a href="FilmServlet.action?type=update&uid=${item.filmId}"> 编辑    </a></td>
 	 
 	  </tr>
    </c:forEach>

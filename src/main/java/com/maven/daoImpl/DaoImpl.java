@@ -123,19 +123,21 @@ public class DaoImpl implements Dao{
 	public Film updateFilm(int id) {
 		// TODO Auto-generated method stub
 		Film film = null;
-		String sql = "select film_id,title,description, name from sakila.film,sakila.language where film.language_id = language.language_id  AND film_id = ?";
+		String sql = "select film_id,title,description,name from sakila.film,sakila.language where film.language_id = language.language_id  AND film_id = ?";
 		conn = DBConnection.getDBConnection();
 	//	preparedStatement = DBConnection.getPreparedStatement(Sql.select_last_neme);
 		try {
 			film = new Film();
+			Language language = new Language();
 			preparedStatement = DBConnection.getPreparedStatement(sql);
 			preparedStatement.setInt(1, id);
 		    ResultSet result = preparedStatement.executeQuery();
 		    while (result.next()) {
+		    	language.setName(result.getString("name"));
 		    	film.setTitle(result.getString("title"));
                 film.setFilmId(result.getShort("film_id"));
 				film.setDescription(result.getString("description"));
-				
+				film.setLanguage(language);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -146,6 +148,31 @@ public class DaoImpl implements Dao{
 		return film;
 		
 		
+	}
+
+	public boolean updateFileNew(String title, String desc, int name, int id) {
+		// TODO Auto-generated method stub
+		boolean res = false;
+		String sql = "update sakila.film set title=?,description=?,language_id=? where film_id = ?";
+		conn = DBConnection.getDBConnection();
+	//	preparedStatement = DBConnection.getPreparedStatement(Sql.select_last_neme);
+		try {
+			preparedStatement = DBConnection.getPreparedStatement(sql);
+			preparedStatement.setString(1, title);
+			preparedStatement.setString(2, desc);
+			preparedStatement.setInt(3, name);
+			preparedStatement.setInt(4, id);
+		    int result = preparedStatement.executeUpdate();
+		    if (result!=0) {
+				res=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}/*finally {
+			DBConnection.close();
+		}*/
+		return res;
 	}
 	
 	//查询所有的film

@@ -34,6 +34,7 @@ public class LoginServlet extends HttpServlet{
              }  
              Customer user  = new Customer(); 
              user.setFirst_name(username);
+             req.getSession().setAttribute("user",user);
              Services services = new ServicesImpl();
               boolean istrue = services.selectFist_Name(user);  
               if(istrue){  

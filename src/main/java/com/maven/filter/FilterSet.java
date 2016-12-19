@@ -10,8 +10,11 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-public class EcodingFilterSet implements Filter{
+import com.maven.bean.Customer;
+
+public class FilterSet implements Filter{
 private String encoding;
 	
 	public String getEncoding() {

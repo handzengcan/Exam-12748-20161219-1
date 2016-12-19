@@ -28,5 +28,13 @@ public class ServicesImpl implements Services{
 		// TODO Auto-generated method stub
 		return dao.insertFilm(title, desc, language_id);
 	}
+	public Film updateFilm(int id) {
+		// TODO Auto-generated method stub
+		return dao.updateFilm(id);
+	}
+	public boolean updateFileNew(String title, String desc, int name, int id) {
+		// TODO Auto-generated method stub
+		return dao.updateFileNew(title, desc, name, id);
+	}
 
 }

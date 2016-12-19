@@ -17,4 +17,6 @@ public interface Dao {
 	public boolean insertFilm(String title,String desc,int language_id);
 
 	public Film updateFilm(int id);
+	
+	public  boolean updateFileNew(String title,String desc,int name,int id);
 }
